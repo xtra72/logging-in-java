@@ -1,0 +1,29 @@
+<configuration>
+  <!-- 콘솔 어펜더 -->
+  <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <!-- 콘솔 어펜더용 로그 메시지 패턴 -->
+      <Pattern>%c %d{yyyy-MM-dd HH:mm:ss} %-5p %m%n</Pattern>
+    </layout>
+  </appender>
+
+  <!-- 파일 어펜더 -->
+  <appender name="fout" class="ch.qos.logback.core.FileAppender">
+    <file>logs/logback.log</file>
+    <append>false</append>
+    <encoder>
+      <!-- 파일 어펜더용 로그 메시지 패턴 -->
+      <pattern>%c %d{yyyy-MM-dd HH:mm:ss} %-5p %m%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- 지정된 패키지의 로그 레벨 재정의 -->
+  <logger name="com.nhnacademy.modules" level="TRACE" additivity = "false">
+    <appender-ref ref="stdout" />
+  </logger>
+
+  <root level="INFO">
+    <appender-ref ref="stdout" />
+    <appender-ref ref="fout" />
+  </root>
+</configuration>
